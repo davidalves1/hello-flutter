@@ -56,14 +56,11 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       widget.items = result;
     });
-    print('Dados carregados com sucesso!');
   }
 
-  saveData() async {
+  void saveData() async {
     var prefs = await SharedPreferences.getInstance();
     await prefs.setString('data', jsonEncode(widget.items));
-
-    print('Dados armazenados!');
   }
 
   void add() {
@@ -95,6 +92,7 @@ class _HomePageState extends State<HomePage> {
           controller: newTaskCtrl,
           // autofocus: true,
           keyboardType: TextInputType.text,
+          textCapitalization: TextCapitalization.sentences,
           style: TextStyle(
             color: Colors.white,
             fontSize: 18,
